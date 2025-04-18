@@ -64,7 +64,7 @@ class GardenBotEnv(gym.Env):
             reward -= 2  # Neglect
 
         # Done if plant dies
-        terminated = plant_health <= 0
+        terminated = bool(plant_health <= 0)
 
         self.state = np.array([soil_moisture, nutrient_level, pest_threat, plant_health], dtype=np.float32)
         return self.state, reward, terminated, False, {}
